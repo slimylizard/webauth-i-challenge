@@ -3,8 +3,10 @@ const express = require('express')
 const server = express();
 server.use(express.json());
 
+const authRouter = require('./auth/auth-router');
+server.use('/auth', authRouter);
 const userRouter = require('./auth/user-router');
-server.use('/auth', userRouter);
+server.use('/users', userRouter);
 
 const port = 8000;
 

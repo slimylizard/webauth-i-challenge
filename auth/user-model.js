@@ -1,10 +1,21 @@
 const db = require('../data/db.js')
 
 function insert(user) {
-    db.insert(user, 'id')
+    return db('users')
+        .insert(user, 'id')
         .then(([id]) => id)
 }
 
+function findByUsername(username) {
+    return db('users')
+        .where({username}).first();
+}
+
+function find() {
+    return db('users');
+}
 module.exports = {
-    insert
+    insert,
+    findByUsername,
+    find
 };
